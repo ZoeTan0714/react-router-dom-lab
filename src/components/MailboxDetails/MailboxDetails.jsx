@@ -4,14 +4,14 @@ function MailboxDetails (props) {
     const {mailboxId} = useParams();
 
     const selectedBox = props.mailboxes.find(
-        (mailbox) => mailbox.id === Number(mailboxId)
+        (mailbox) => mailbox._id === Number(mailboxId)
     )
 
     return (
         <main>
             <h2>Mailbox Details</h2>
             {selectedBox ? (
-                <div>
+                <div className="mailbox-details">
                 <p><strong>ID:</strong> {selectedBox._id}</p>
                 <p><strong>Size:</strong> {selectedBox.boxSize}</p>
                 <p><strong>Owner:</strong> {selectedBox.boxOwner}</p>

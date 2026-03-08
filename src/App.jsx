@@ -1,6 +1,6 @@
 // src/App.jsx
 import { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar.jsx';
 import MailboxList from './components/MailboxList/MailboxList.jsx';
 import MailboxForm from './components/MailboxForm/MailboxForm.jsx';
@@ -12,13 +12,12 @@ const App = () => {
 
   const addBox = (formData) => {
     const newMailbox = {
-      id: mailboxes.length + 1,
+      _id: mailboxes.length + 1,
       boxSize: formData.boxSize,
       boxOwner: formData.boxOwner
     };
 
     setMailboxes([...mailboxes, newMailbox]);
-
     navigate('/mailboxes')
   };
 
@@ -26,8 +25,8 @@ const App = () => {
       <div className="App">
       <NavBar />
       <Routes>
-        <Route path="/" element={<main><h1>Post Office</h1></main>} />
-        <Route path="/mailboxes" element={<MailboxList mailboxes={mailboxes}/>} />
+        <Route path="/" element = {<MailboxList mailboxes={mailboxes} title="Mailbox List"/>} />
+        <Route path="/mailboxes" element={<MailboxList mailboxes={mailboxes} title="All Mailboxes"/>} />
         <Route path="/new-mailbox" element={<MailboxForm addBox={addBox}/>} />
         <Route path="/mailboxes/:mailboxId" element={<MailboxDetails mailboxes={mailboxes}/>} />
       </Routes>

@@ -7,11 +7,13 @@ function MailboxForm (props) {
     })
 
     const handleChange = (event) => {
+      if (event && event.target) {
         setFormData ({
             ...formData,
-            [event.target.name]: event.targret.value
+            [event.target.name]: event.target.value
         })
-    }
+      }
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();

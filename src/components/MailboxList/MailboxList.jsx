@@ -1,10 +1,12 @@
-import { link } from 'react-router-dom'
-import MailboxList from './components/MailboxList/MailboxList.css';
+import { Link } from 'react-router-dom'
+import './MailboxList.css';
 
 function MailboxList(props) {
+    const title = props.title || "Mailboxes";
+
     return (
     <main>
-      <h2>Mailboxes</h2>
+      <h2>{title}</h2>
       <div className="mailbox-grid">
         {props.mailboxes.map((mailbox) => (
           <Link 
